@@ -1,9 +1,8 @@
 # Strava Stats
 
 Quick little project to generate some descriptive statistics,
-light analysis, and plots from [bulk downloads][https://support.strava.
-com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bul
-k] of Strava files (`.gpx`)
+light analysis, and plots from [bulk downloads][https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bulk]
+of Strava files (`.gpx`)
 
 ## Getting Started
 
@@ -12,8 +11,7 @@ your local machine for development and testing purposes.
 
 ### Installing
 
-I would recommend working with [virtualenv/virtualenvwrapper][http://
-docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper]
+I would recommend working with [virtualenv/virtualenvwrapper][http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper]
 to keep dependencies clean.
 
 #### For general usage:
@@ -35,11 +33,9 @@ Requirements can be found in [`requirements.txt`](requirements.txt)
 
 ### Usage
 
-If you don't yet have your
-[bulk Strava file export][https://support.strava.com/hc/en-us/articles
-/216918437-Exporting-your-Data-and-Bulk-Export#Bulk], a couple example
-files can be found in the [`data`][https://github.com/tdlangland/
-strava-stats/tree/master/data] directory of this repo.
+If you don't yet have your [bulk Strava file export][https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bulk]
+, a couple example files can be found in the [`data`][https://github.com/tdlangland/strava-stats/tree/master/data]
+directory of this repo.
 
 ```
 from pprint import pprint
@@ -54,6 +50,7 @@ data_dump = core.StravaData(export_dir)
 print(data_dump.file_count)
 print(data_dump.activity_types)
 print(data_dump.date_range)
+
 
 # Get point data from the files (the most granular data)
 points = core.PointData(export_dir)
@@ -72,8 +69,7 @@ all_routes = routes.get_routes()
 # Maybe some summary statisitics about those routes?
 pprint(routes.route_stats())
 
-
-# What are your favorite places to start and activity?
+# What are your favorite places to start activities?
 routes.favorite_launches()
 
 # I want a heatmap just for myself!
