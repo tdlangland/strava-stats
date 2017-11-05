@@ -1,5 +1,5 @@
 .. strava-stats documentation master file, created by
-   sphinx-quickstart on Sat Nov  4 12:43:46 2017.
+   sphinx-quickstart on Sat Nov  4 16:50:15 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
