@@ -6,30 +6,30 @@ light analysis, and plots from bulk downloads of Strava files (`.gpx`)
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on how to deploy the project on a live system.
+your local machine for development and testing purposes.
 
 ### Installing
 
-A step by step series of examples that tell you have to get a
-development env running
+I would recommend working with [virtualenv/virtualenvwrapper][http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper] to keep dependencies clean.
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Clone the repo from Git
 
 ```
-until finished
+git clone https://github.com/tdlangland/strava-stats.git
 ```
 
-End with an example of getting some data out of the system or using it
-for a little demo
+Run `setup.py` from the cloned directory
+
+```
+python setup.py install
+```
 
 ### Usage
+
+A couple data files are included to test on, in case you don't have
+your own yet.
+
+### Running Tests
 
 ## License
 

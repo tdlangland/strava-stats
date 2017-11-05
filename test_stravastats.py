@@ -8,8 +8,10 @@ import numpy as np
 import pandas as pd
 
 from contextlib import contextmanager
-from stravastats import elev_gain_loss, haversine, progbar, StravaData, PointData, RouteData
 from StringIO import StringIO
+
+from stravastats.core import StravaData, PointData, RouteData
+from stravastats.utils import elev_gain_loss, haversine, progbar
 
 
 @contextmanager
