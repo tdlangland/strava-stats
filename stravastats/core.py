@@ -229,7 +229,7 @@ class RouteData(StravaData):
         :rtype: dict
         """
         # TODO Add by_type/by_range
-        if not self.routes or force_parse:
+        if self.routes is None or force_parse:
             print('Routes not yet parsed.')
             self.get_routes(types, ranges)
 
@@ -361,11 +361,14 @@ class RouteData(StravaData):
 
         return centroids
 
-    def plot_heatmap(self, save_loc='.', return_html_str=False, test=False):
+    def plot_heatmap(self, show_map=True, save_loc=None, return_html_str=False, test=False):
         """
         Generate a personalized heatmap of routes.
 
-        :param str save_loc: path to save location for generated html file, filename of 'route_heatmap'. Default: '.'
+        If you have a Mapbox account/API key, add it to your ~/.bash_profile as 'MAPBOX_KEY' to get a nice(er) basemap
+
+        :param bool show_map: show the plotted map in an available browser. Default: True
+        :param str save_loc: path to save location for generated html file, filename of 'route_heatmap'. Default: None
         :param bool return_html_str: if True, return the html string needed to embed the generated figure.
                                      Default: False
         :param bool test: flag used during testing, shouldn't be changed.
@@ -374,15 +377,18 @@ class RouteData(StravaData):
         """
         try:
             mapbox_key = os.environ['MAPBOX_KEY']
-            tiles = models.tiles.WMTSTileSource(url=('https://api.mapbox.com/styles/v1/tdlangland/cj9dewzvu63v72rs3fe1'
-                                                     'ioiwx/tiles/256/{{z}}/{{x}}/{{y}}@2x?access_token={}'.format(
-                mapbox_key)), attribution=("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href="
-                                           "'http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong>"
-                                           "<a href='https://www.mapbox.com/map-feedback/' target='_blank'>"
-                                           "Improve this map</a></strong>"))
+            tiles = models.tiles.WMTSTileSource(
+                url=('https://api.mapbox.com/styles/v1/tdlangland/cj9dewzvu63v72rs3fe1ioiwx/tiles/256/{{z}}/{{x}}/{{y}}'
+                     '@2x?access_token={}'.format(mapbox_key)),
+                attribution=("© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstree"
+                             "tmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-"
+                             "feedback/' target='_blank'>Improve this map</a></strong>"))
         except KeyError:
-            pass
-            # backup tiles
+            print('Check out docs for how to get an even nicer looking basemap!')
+            tiles = models.tiles.WMTSTileSource(
+                url='http://tiles.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png',
+                attribution=('&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors,'
+                             '&copy; <a href="https://cartodb.com/attributions">CartoDB</a>'))
 
         routes = self.routes['data'].to_crs(epsg=3857)
         route_xs = [list(l.coords.xy[0]) for l in routes['geometry']]
@@ -394,6 +400,8 @@ class RouteData(StravaData):
         fig.axis.visible = False
         fig.add_tile(tiles)
         fig.multi_line(route_xs, route_ys, color='#33d6ff', alpha=0.7, line_width=2)
+        if show_map:
+            io.show(fig)
         if save_loc is not None:
             io.output_file("{}/route_heatmap.html")
         if return_html_str:
