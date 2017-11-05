@@ -1,7 +1,7 @@
 # Strava Stats
 
 Quick little project to generate some descriptive statistics,
-light analysis, and plots from [bulk downloads][https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bulk]
+light analysis, and plots from [bulk downloads](https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bulk)
 of Strava files (`.gpx`)
 
 ## Getting Started
@@ -11,7 +11,7 @@ your local machine for development and testing purposes.
 
 ### Installing
 
-I would recommend working with [virtualenv/virtualenvwrapper][http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper]
+I would recommend working with [virtualenv/virtualenvwrapper](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper)
 to keep dependencies clean.
 
 #### For general usage:
@@ -33,8 +33,8 @@ Requirements can be found in [`requirements.txt`](requirements.txt)
 
 ### Usage
 
-If you don't yet have your [bulk Strava file export][https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bulk]
-, a couple example files can be found in the [`data`][https://github.com/tdlangland/strava-stats/tree/master/data]
+If you don't yet have your [bulk Strava file export](https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bulk)
+, a couple example files can be found in the [`data`](https://github.com/tdlangland/strava-stats/tree/master/data)
 directory of this repo.
 
 ```
