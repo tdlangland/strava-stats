@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import time
 
 import geopandas as gpd
 import numpy as np
@@ -136,6 +137,7 @@ class PointData(StravaData):
             total = int(round(float(len(fls)) / result._chunksize))
             done = total - result._number_left
             progbar(total, done)
+            time.sleep(5)
         parsed_points = result.get()
         t_pool.close()
         t_pool.join()
@@ -205,6 +207,7 @@ class RouteData(StravaData):
             total = int(round(float(len(fls)) / result._chunksize))
             done = total - result._number_left
             progbar(total, done)
+            time.sleep(5)
         routes = [r for r in result.get() if r is not None]
         t_pool.close()
         t_pool.join()
