@@ -22,5 +22,5 @@ setup(
     license='MIT',
     packages=find_packages(exclude=['data', 'dist', 'docs']),
     install_requires=install_requires,
-    package_data={'strava-stats': ['requirements.txt', 'data/*.gpx']},
+    include_package_data=True,
 )
