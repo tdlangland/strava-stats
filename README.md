@@ -56,7 +56,7 @@ print(data_dump.date_range)
 points = core.PointData(export_dir)
 
 run_points = points.get_data(types=['run'])
-may_points = points.get_data(ranges=[('2017-05-01', '2017-06-01'])
+may_points = points.get_data(ranges=[('2017-05-01', '2017-06-01')]
 # Careful with this next one, if you have a lot of activities this can be VERY LARGE
 all_points = points.get_data()
 
